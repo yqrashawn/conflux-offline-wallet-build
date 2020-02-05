@@ -1,36 +1,31 @@
-matrix:
-  include:
-    - os: osx
-      osx_image: xcode10.2
-      language: node_js
-      node_js: "10"
-      env:
-        - ELECTRON_CACHE=$HOME/.cache/electron
-        - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+os: osx
+osx_image: xcode10.2
+language: node_js
+node_js: '10'
+env:
+- ELECTRON_CACHE=$HOME/.cache/electron
+- ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 cache:
   directories:
-    - node_modules
-    - $HOME/.cache/electron
-    - $HOME/.cache/electron-builder
-
+  - node_modules
+  - "$HOME/.cache/electron"
+  - "$HOME/.cache/electron-builder"
 script:
-  - |
-    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      yarn dist -l
-    else
-      yarn dist -wm
-    fi
+- |
+  if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    yarn dist -l
+  else
+    yarn dist -wm
+  fi
 before_cache:
-  - rm -rf $HOME/.cache/electron-builder/wine
-
+- rm -rf $HOME/.cache/electron-builder/wine
 branches:
   except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
-
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
 deploy:
   provider: releases
   api_key:
-    secure: 3xIPPkDWvHaD7Fnc/g/mmPoYb4pxcS+iZ5PtcH421Sulfuk5b8+dG64uZ+YfKpyUTuGgvnI2Fe70Ne1kku/+AJuljBBCivqb8LED4cO4+5eJYQa95YUyhtIWpxdykdexYCzLa7AFWGx1UsFvk+XU5O7WKLJxNvPKmaJ9bcWrnhm4XH94u5qICQqav4PAoSoWqRF2gK/hBqQSNDW7Voz5VS1YQUEmxoX0OoSHQGaDn0juxJzprFi/W/0aapEOPSd+G7OQ6D34ShRVQ6DBxI8t+1urm3prz0kNqum/5u+KFKXKfBkH17MmWiQIn0cQsNS/UV6T2j61XHjA3+g5HRX4Jwm7mBV3UMDASaeNvMdb3i/3zLosX74jgVDjRrm0P10U7N3UTOORmMrRI3YzOjPWluQFabGU0yplOnQ36Gw3K/++VTPmBXdY3UukATOsZ7ymO6KTAIOleOQlsqVr1sB6IrDViuCzVGpYEXNk5FaM0B13T1svY3ObANxlPITDSKgtv+cmbbzV6WHKYfBetpQV2h3Ske5LADAF4hswaNiRH7njE3ARoEBqz8nZ7pBM9gtAbzxABXyPmTjVYMZn6KekZcvqCyPHHxe0j/PzxLLbkOcFfY3Il6iNLSAAMZj+yszT4Fh/ibM3UQmDoy8zQCcfIWTF5ACXWzCw9cjn6/0Sc+M=
+    secure: QS77FVmSh3e2/t4BRZstH+hNgxVUL5Mnj8xDVl8KVyYzenbsXAhZ9lmDIcU6WqgKOwtyYMo5d+9AlXwF9CQbgzy3NfTibuJMR+usRpsn7+miKACVv4nBGhlYZ7oG6pPw77ZOUFwlfoY4kAk70V+rLw4IYxHlhCHKgseGDmLuMYAJ9rn1ylb9cSJS1BK0U0CaPNARaJEvc1Zmb3VfPq0eoYi8X5IMH93PZArgmwTP8v/wCuRhfnWcLCkRDqShmCijtFlber7hLH9zgkHCXQhHfJRo2ak7ww9vXCdXMX73F+E+Q9u8IC9z4I+uD/JTVmT6duCVWWsumwWu8XKQKqhtpEzBv+Y8wp8IIvhVpmMiSGpfi7yhP0wCLTNHUUm3ebujRnAg00cEPR62+qy0HIZtqfmto2KDWdBB2TutVjPW9yCzvupbRQ6cdXdyy3DBjUnDcHlxlDGI12RIxGugADqdHJvJMZg8L/UThsRQYxryxGwYdZUDcLayRFbcKQSddhqPl0NjLKh0Z7XRi9GKQkIGI7/NYJutCdLmpOjRxQxPa2bCfniSaHQyZdQo/8QQYY8irtzYfVaeNk6Stw+st7nrHGzVa6nE80BT3HWDI5BONLsqT/vYf5YN0fZ0HQB5Fa/rRVwPtQgAfQ+1fAy/MwZ73t3NqD0bWwnvaLDR6meT2fc=
   file: dist/*
   skip_cleanup: true
   on:
