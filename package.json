@@ -22,7 +22,7 @@
     "get-port": "^5.1.1"
   },
   "devDependencies": {
-    "electron-builder": "22.2.0",
-    "electron": "^8.0.0"
+    "electron": "^8.0.0",
+    "electron-builder": "^22.3.2"
   }
 }
