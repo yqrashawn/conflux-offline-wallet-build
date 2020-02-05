@@ -1,0 +1,24 @@
+{
+  "name": "conflux-offline-wallet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -m"
+  },
+  "build": {
+    "appId": "offline-wallet.conflux-chain.org",
+    "icon": "conflux.ico"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-builder-squirrel-windows": "^22.3.3",
+    "express": "^4.17.1",
+    "get-port": "^5.1.1"
+  },
+  "devDependencies": {
+    "electron": "^8.0.0",
+    "electron-builder": "^22.3.2"
+  }
+}
