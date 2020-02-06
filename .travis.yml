@@ -2,9 +2,20 @@ os: osx
 osx_image: xcode10.2
 language: node_js
 node_js: '10'
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: t1n5a9zHrz05ozXFAHrmr6LhBAfWqvv5Hx6kMYG7R/1ysmLk/ls0FXiLic6e8biWvs5RmV7JdhmYtJTCO0mALGZ/mu6buqPDnMcsZ0Xsf3z/CuCjVgLx0q7F/qrpvkZk36IBOGxykYTPK8TWTfPcQl0jJ+cmDKxOHWykJEUl8dswE1egV8mmzzpi7FfjUgFt01za95hH3vwEdo4sjybe3SdypayAZyssvOZCRBRs1THRrBtIGv8dr+uf+PhTxyhVI+PXYeGBrwDTvESRGx/WyA/XupLEI3sEHoPHeNHwW6Bv8EQG5VqdbCLMV2ekFZrUd6bxesrQrmabs//HZLe6qUWYtn54/UsnLyEyuPR+K0PD35w3ykrNNQEktxK00FvNr/qX5xaWoL9K1hH5sB61CcUGfNS2xEWUaJphTJBWjs3afSaSm/FNVOYWA6wUrZFm/BToIbNQqvnQcUzUuvP2SBuc+IozrCbr+zmqPKcgEuvDKlKr6ClzhVaWHYMgwnWoVGkxtSA3mFi5L1xJI63Vb3cnRqU2ivbN3oY/XGoIHAYqFmldlvH9H66IhCWcV3lbp/IT6xTpT3OhMLK2N3TjuWDzjoOM4hslICXy8KxXGRjkAHEMWo19DkVKn6BJSCFeezKXYqsvfTkxaMdyl1FKVwB52fQGUYxIb9EJVOVZ93o=
+  file: dist/**/*
+  on:
+    tags: true
+    repo: yqrashawn/conflux-offline-wallet-build
 env:
 - ELECTRON_CACHE=$HOME/.cache/electron
 - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+before_cache:
+- rm -rf $HOME/.cache/electron-builder/wine
 cache:
   directories:
   - node_modules
@@ -17,14 +28,4 @@ script:
   else
     yarn dist -wm
   fi
-before_cache:
-- rm -rf $HOME/.cache/electron-builder/wine
-deploy:
-  provider: releases
-  api_key:
-    secure: QS77FVmSh3e2/t4BRZstH+hNgxVUL5Mnj8xDVl8KVyYzenbsXAhZ9lmDIcU6WqgKOwtyYMo5d+9AlXwF9CQbgzy3NfTibuJMR+usRpsn7+miKACVv4nBGhlYZ7oG6pPw77ZOUFwlfoY4kAk70V+rLw4IYxHlhCHKgseGDmLuMYAJ9rn1ylb9cSJS1BK0U0CaPNARaJEvc1Zmb3VfPq0eoYi8X5IMH93PZArgmwTP8v/wCuRhfnWcLCkRDqShmCijtFlber7hLH9zgkHCXQhHfJRo2ak7ww9vXCdXMX73F+E+Q9u8IC9z4I+uD/JTVmT6duCVWWsumwWu8XKQKqhtpEzBv+Y8wp8IIvhVpmMiSGpfi7yhP0wCLTNHUUm3ebujRnAg00cEPR62+qy0HIZtqfmto2KDWdBB2TutVjPW9yCzvupbRQ6cdXdyy3DBjUnDcHlxlDGI12RIxGugADqdHJvJMZg8L/UThsRQYxryxGwYdZUDcLayRFbcKQSddhqPl0NjLKh0Z7XRi9GKQkIGI7/NYJutCdLmpOjRxQxPa2bCfniSaHQyZdQo/8QQYY8irtzYfVaeNk6Stw+st7nrHGzVa6nE80BT3HWDI5BONLsqT/vYf5YN0fZ0HQB5Fa/rRVwPtQgAfQ+1fAy/MwZ73t3NqD0bWwnvaLDR6meT2fc=
-  file: dist/*
-  skip_cleanup: true
-  on:
-    tags: true
-    repo: yqrashawn/conflux-offline-wallet-build
+- ls dist
