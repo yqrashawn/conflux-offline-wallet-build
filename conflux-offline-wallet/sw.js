@@ -1,11 +1,7 @@
 var __wpo = {
   "assets": {
     "main": [
-<<<<<<< HEAD
-      "/runtime.9589672bf23b06cb709d.js",
-=======
       "/runtime.687ec93f188a894c484e.js",
->>>>>>> master
       "/"
     ],
     "additional": [
@@ -22,11 +18,7 @@ var __wpo = {
       "/npm.react-app-polyfill.1c85ea4a4c368d6cb69a.chunk.js",
       "/npm.react-intl.693270b97eb77c7cea08.chunk.js",
       "/npm.react-redux.aa69ca9b7b7f38494133.chunk.js",
-<<<<<<< HEAD
-      "/14.93ca5c2c1792a2667e18.chunk.js",
-=======
       "/14.f2439d5aa58e7a45ab75.chunk.js",
->>>>>>> master
       "/15.ce8e908d6c3d54b7083a.chunk.js",
       "/16.c2b7dc539ee4eb779204.chunk.js"
     ],
@@ -47,17 +39,6 @@ var __wpo = {
     "1628afd7e3d188634c4aa0b2d27ea5e7f59a08fd": "/npm.react-app-polyfill.1c85ea4a4c368d6cb69a.chunk.js",
     "ee7adbce5547e6521fab4340ddfc8dd878bcdc9b": "/npm.react-intl.693270b97eb77c7cea08.chunk.js",
     "bb73c7d3293e5d2cedb650cce35a389aee50c52f": "/npm.react-redux.aa69ca9b7b7f38494133.chunk.js",
-<<<<<<< HEAD
-    "09bc207cdf4e7384b1c86492311c82536cc82f02": "/runtime.9589672bf23b06cb709d.js",
-    "d40d8e430e4b38ecdd32b50f6dd7e4fa75942c19": "/14.93ca5c2c1792a2667e18.chunk.js",
-    "d6502253249f27f4ae86bc1da05a92aac4ee4de7": "/15.ce8e908d6c3d54b7083a.chunk.js",
-    "92685836f306abe727791678de887b69dab75d30": "/16.c2b7dc539ee4eb779204.chunk.js",
-    "322c023f27095b7280ebb74c7a1dfbf16958e082": "/"
-  },
-  "strategy": "changed",
-  "responseStrategy": "cache-first",
-  "version": "2/6/2020, 12:11:09 AM",
-=======
     "2ff5733661115ce4b82fb726bb1469984e5c07be": "/runtime.687ec93f188a894c484e.js",
     "059c8036d322751b8cee775c4f3774b8f132c577": "/14.f2439d5aa58e7a45ab75.chunk.js",
     "d6502253249f27f4ae86bc1da05a92aac4ee4de7": "/15.ce8e908d6c3d54b7083a.chunk.js",
@@ -67,7 +48,6 @@ var __wpo = {
   "strategy": "changed",
   "responseStrategy": "cache-first",
   "version": "2/11/2020, 2:08:06 AM",
->>>>>>> master
   "name": "webpack-offline",
   "pluginVersion": "5.0.6",
   "relativePaths": false
