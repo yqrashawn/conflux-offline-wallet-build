@@ -7,34 +7,28 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: t1n5a9zHrz05ozXFAHrmr6LhBAfWqvv5Hx6kMYG7R/1ysmLk/ls0FXiLic6e8biWvs5RmV7JdhmYtJTCO0mALGZ/mu6buqPDnMcsZ0Xsf3z/CuCjVgLx0q7F/qrpvkZk36IBOGxykYTPK8TWTfPcQl0jJ+cmDKxOHWykJEUl8dswE1egV8mmzzpi7FfjUgFt01za95hH3vwEdo4sjybe3SdypayAZyssvOZCRBRs1THRrBtIGv8dr+uf+PhTxyhVI+PXYeGBrwDTvESRGx/WyA/XupLEI3sEHoPHeNHwW6Bv8EQG5VqdbCLMV2ekFZrUd6bxesrQrmabs//HZLe6qUWYtn54/UsnLyEyuPR+K0PD35w3ykrNNQEktxK00FvNr/qX5xaWoL9K1hH5sB61CcUGfNS2xEWUaJphTJBWjs3afSaSm/FNVOYWA6wUrZFm/BToIbNQqvnQcUzUuvP2SBuc+IozrCbr+zmqPKcgEuvDKlKr6ClzhVaWHYMgwnWoVGkxtSA3mFi5L1xJI63Vb3cnRqU2ivbN3oY/XGoIHAYqFmldlvH9H66IhCWcV3lbp/IT6xTpT3OhMLK2N3TjuWDzjoOM4hslICXy8KxXGRjkAHEMWo19DkVKn6BJSCFeezKXYqsvfTkxaMdyl1FKVwB52fQGUYxIb9EJVOVZ93o=
+  file_glob: true
   file:
-    - mainnet/dist/*.exe
-    - mainnet/dist/*.dmg
-    - testnet/dist/*.exe
-    - testnet/dist/*.dmg
+    - "dist/*.dmg"
+    - "dist/*.exe"
   on:
+    tags: true
     repo: yqrashawn/conflux-offline-wallet-build
 env:
 - ELECTRON_CACHE=$HOME/.cache/electron
+- ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
 cache:
   directories:
-  - testnet/node_modules
-  - mainnet/node_modules
+  - node_modules
   - "$HOME/.cache/electron"
   - "$HOME/.cache/electron-builder"
-before_install:
-  - npm i -g yarn
-install:
-  - cd mainnet && yarn && cd ..
-  - cd testnet && yarn && cd ..
 script:
-  - |
-    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      cd mainnet && yarn dist -l && cd ../testnet && yarn dist -l && cd ..
-    else
-      cd mainnet && yarn dist -wm && cd ../testnet && yarn dist -wm && cd ..
-    fi
-  - ls mainnet/dist
-  - ls testnet/dist
+- |
+  if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    yarn dist -l
+  else
+    yarn dist -wm
+  fi
+- ls dist
