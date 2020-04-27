@@ -1,5 +1,5 @@
 {
-  "name": "conflux-offline-wallet",
+  "name": "conflux-offline-wallet-mainnet",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dist": "electron-builder"
   },
   "build": {
-    "appId": "offline-wallet.conflux-chain.org",
+    "appId": "mainnet.offline-wallet.conflux-chain.org",
     "win": {
       "icon": "conflux.icon"
     },
